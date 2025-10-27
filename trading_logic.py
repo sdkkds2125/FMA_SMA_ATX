@@ -23,7 +23,7 @@ def calculate_adx(df, window):
     df['plus_di'] = 100 * (df['plus_dm'].rolling(window=window).sum() / df['atr'])
     df['minus_di'] = 100 * (df['minus_dm'].rolling(window=window).sum() / df['atr'])
     
-    df['dx'] = 100 * (abs(df['plus_di'] - df['minus_di']) / (df['plus_di'] + df['minus_di']))
+    df['dx'] = 100 * (abs(df['plus_di'] - df['minus_di']) / (df['plus_di'] + df['minus_di'] + 1e-6))
     df['adx'] = df['dx'].rolling(window=window).mean()
     return df
 
